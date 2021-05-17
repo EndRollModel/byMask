@@ -1,15 +1,20 @@
 const fs = require('fs');
 
-/**
- * 解析CSV
- */
 class LoadCsv {
   /**
-   * 建構子 需要檔案路徑
-   * @param filePath
+   * 建構子 需要檔案路徑/檔案內容
+   * @param file
    */
-  constructor( filePath ) {
-    this._file = fs.readFileSync(filePath, 'utf-8').split(/\r?\n/);
+  constructor( file = undefined ) {
+    if(file === undefined){
+      this._file = '';
+      return;
+    }
+    if(file.indexOf('.csv') > -1){
+      this._file = fs.readFileSync(file, 'utf-8').split(/\r?\n/); // 非path
+    } else {
+      this._file = file.split(/\r?\n/); // 直接讀取檔案
+    }
   }
 
   /**
@@ -26,6 +31,14 @@ class LoadCsv {
    */
   get file(){
     return this._file;
+  }
+
+  set file( file ){
+    if(file.indexOf('.csv') > -1){
+      this._file = fs.readFileSync(file, 'utf-8').split(/\r?\n/);
+    } else {
+      this._file = file.split(/\r?\n/);
+    }
   }
 
   /**
@@ -65,11 +78,11 @@ class LoadCsv {
         findArray.push(item);
       }else{
         if (item.indexOf(keywords) > -1) {
-          findArray.push(item)
+          findArray.push(item);
         }
       }
     });
-    return this.toJson(findArray)
+    return this.toJson(findArray);
   }
 
   /**

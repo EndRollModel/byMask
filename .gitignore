@@ -44,9 +44,6 @@ jspm_packages/
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
 
-# TypeScript v1 declaration files
-typings/
-
 # TypeScript cache
 *.tsbuildinfo
 
@@ -109,8 +106,8 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-# .idea
 .idea
 
-# gitkeep
-!.gitkeep
+cnv/
+
+Test.js
