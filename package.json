@@ -14,7 +14,5 @@
     "moment": "^2.24.0",
     "request": "^2.88.0"
   },
-  "devDependencies": {
-    "pkg": "^4.4.3"
-  }
+  "devDependencies": {}
 }
